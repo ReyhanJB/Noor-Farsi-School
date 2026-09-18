@@ -328,6 +328,30 @@ a { color: inherit; }
 .level:nth-child(2) li::before { color: var(--accent); }
 .level:nth-child(3) li::before { color: var(--pop); }
 
+/* ── SCHEDULE ── */
+.schedule { background: var(--bg-alt); }
+.cal-wrap {
+  margin-top: 2.5rem;
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--surface);
+  position: relative;
+}
+.cal-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: none;
+}
+.cal-note {
+  padding: 0.75rem 1.25rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
 /* ── ENROLLMENT ── */
 .enrollment { background: var(--surface); }
 .enroll-grid {
@@ -435,6 +459,7 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; 
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#schedule">Schedule</a></li>
     <li><a href="#enroll" class="nav-cta">Enroll Now</a></li>
   </ul>
 </nav>
@@ -552,6 +577,24 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; 
         </ul>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<!-- ─── Schedule ─── -->
+<section class="section schedule" id="schedule">
+  <div class="inner">
+    <div class="eyebrow">برنامه کلاس‌ها · Class Schedule</div>
+    <h2 class="section-title">Upcoming Classes &amp; Events</h2>
+    <p class="section-sub">Stay up to date with all sessions, holidays, and school events. All times shown in Central Time (Chicago).</p>
+    <div class="cal-wrap">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=5c3e2b7b9981b833f767ce6e8ba935c7827c1baeb9164a649507a59e887d806c%40group.calendar.google.com&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&mode=MONTH"
+        title="Noor Farsi School Calendar"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+      <div class="cal-note">📅 All class times are in Central Time (CT) &nbsp;·&nbsp; Add this calendar to your Google Calendar to get reminders</div>
     </div>
   </div>
 </section>
