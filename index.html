@@ -1,0 +1,658 @@
+<title>Noor Farsi School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ── Design Tokens ── */
+:root {
+  --bg:        #FFF3EC;
+  --bg-alt:    #FEF8F4;
+  --surface:   #FFFFFF;
+  --primary:   #1D5FA6;
+  --accent:    #F5A623;
+  --pop:       #D94740;
+  --teal:      #2AADA0;
+  --text:      #1C1C3A;
+  --muted:     #6B6B8A;
+  --border:    #E8D4C3;
+  --shadow:    0 2px 18px rgba(28,28,58,0.09);
+  --r:         16px;
+  --ff-head:   'Baloo 2', cursive;
+  --ff-body:   'Nunito', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:      #0D1B2F;
+    --bg-alt:  #122039;
+    --surface: #18293F;
+    --primary: #5499D6;
+    --accent:  #F5A623;
+    --pop:     #E86A65;
+    --teal:    #3DBDB0;
+    --text:    #EEE8E1;
+    --muted:   #8E8FAA;
+    --border:  #283A52;
+    --shadow:  0 2px 18px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg:      #0D1B2F;
+  --bg-alt:  #122039;
+  --surface: #18293F;
+  --primary: #5499D6;
+  --accent:  #F5A623;
+  --pop:     #E86A65;
+  --teal:    #3DBDB0;
+  --text:    #EEE8E1;
+  --muted:   #8E8FAA;
+  --border:  #283A52;
+  --shadow:  0 2px 18px rgba(0,0,0,0.35);
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  padding-inline: 0;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+
+/* ── Nav ── */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 99;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  gap: 1rem;
+}
+.brand {
+  display: flex; align-items: center; gap: 0.55rem;
+  text-decoration: none; color: var(--text);
+}
+.brand-mark {
+  width: 38px; height: 38px;
+  background: var(--primary);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; color: white; line-height: 1;
+}
+.brand-name {
+  font-family: var(--ff-head);
+  font-size: 1rem; font-weight: 700; line-height: 1.2;
+}
+.brand-name small {
+  display: block; font-size: 0.62rem; font-weight: 500;
+  color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.nav-links {
+  display: flex; list-style: none; gap: 0.15rem; align-items: center;
+}
+.nav-links a {
+  display: block; padding: 0.4rem 0.9rem;
+  text-decoration: none; color: var(--muted);
+  font-size: 0.9rem; font-weight: 600; border-radius: 8px;
+  transition: color .15s, background .15s;
+}
+.nav-links a:hover { color: var(--primary); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.nav-cta {
+  background: var(--accent) !important; color: #1C1C3A !important;
+  border-radius: 30px !important; font-weight: 700 !important;
+}
+.nav-cta:hover { filter: brightness(0.93) !important; }
+
+/* ── Shared section layout ── */
+.section { padding: 4.5rem 2rem; }
+.inner { max-width: 1020px; margin-inline: auto; }
+.eyebrow {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 0.45rem;
+}
+.section-title {
+  font-family: var(--ff-head);
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 800; line-height: 1.2;
+  text-wrap: balance; margin-bottom: 0.75rem;
+}
+.section-sub {
+  font-size: 1rem; color: var(--muted);
+  max-width: 52ch; line-height: 1.75;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--primary);
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 5rem 2rem;
+  min-height: 500px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 72% 55%, rgba(245,166,35,.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 18% 15%, rgba(42,173,160,.15) 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 520px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(245,166,35,.18);
+  border: 1px solid rgba(245,166,35,.38);
+  color: var(--accent);
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.3rem 0.9rem;
+  border-radius: 30px; margin-bottom: 1.3rem;
+}
+.hero h1 {
+  font-family: var(--ff-head);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 800; line-height: 1.17;
+  text-wrap: balance; margin-bottom: 1.1rem;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p {
+  font-size: 1.05rem; line-height: 1.7;
+  color: rgba(255,255,255,.8);
+  max-width: 42ch; margin-bottom: 2rem;
+}
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.72rem 1.55rem;
+  border-radius: 30px;
+  font-family: var(--ff-body); font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform .15s, box-shadow .15s, filter .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-gold  { background: var(--accent); color: #1C1C3A; box-shadow: 0 4px 18px rgba(245,166,35,.4); }
+.btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.38); }
+.btn-ghost:hover { background: rgba(255,255,255,.1); }
+
+/* Hero ornament — spinning noor ring */
+.hero-visual {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.ornament {
+  position: relative;
+  width: 280px; height: 280px;
+}
+.o-ring {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245,166,35,.32);
+}
+.o-ring:nth-child(2) { inset: 22px; border-color: rgba(42,173,160,.28); border-style: dashed; }
+.o-ring:nth-child(3) { inset: 44px; border-color: rgba(245,166,35,.2); }
+.o-word {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 4.8rem; line-height: 1;
+  color: white;
+  text-shadow: 0 0 48px rgba(245,166,35,.55);
+}
+.o-word span {
+  display: block;
+  font-family: var(--ff-head);
+  font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); text-shadow: none;
+  margin-top: 0.6rem;
+}
+.o-orbit {
+  position: absolute; inset: 0;
+  animation: spin 28s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .o-orbit { animation: none; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.o-dot {
+  position: absolute;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); opacity: .72;
+  top: 50%; left: 50%;
+}
+.o-dot:nth-child(1) { transform: translate(-50%,-50%) rotate(0deg)   translateY(-140px); }
+.o-dot:nth-child(2) { transform: translate(-50%,-50%) rotate(45deg)  translateY(-140px); }
+.o-dot:nth-child(3) { transform: translate(-50%,-50%) rotate(90deg)  translateY(-140px); }
+.o-dot:nth-child(4) { transform: translate(-50%,-50%) rotate(135deg) translateY(-140px); }
+.o-dot:nth-child(5) { transform: translate(-50%,-50%) rotate(180deg) translateY(-140px); }
+.o-dot:nth-child(6) { transform: translate(-50%,-50%) rotate(225deg) translateY(-140px); }
+.o-dot:nth-child(7) { transform: translate(-50%,-50%) rotate(270deg) translateY(-140px); }
+.o-dot:nth-child(8) { transform: translate(-50%,-50%) rotate(315deg) translateY(-140px); }
+/* Teal accent dots (inner) */
+.o-dot-inner {
+  position: absolute;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--teal); opacity: .6;
+  top: 50%; left: 50%;
+}
+.o-dot-inner:nth-child(9)  { transform: translate(-50%,-50%) rotate(22.5deg)  translateY(-110px); }
+.o-dot-inner:nth-child(10) { transform: translate(-50%,-50%) rotate(112.5deg) translateY(-110px); }
+.o-dot-inner:nth-child(11) { transform: translate(-50%,-50%) rotate(202.5deg) translateY(-110px); }
+.o-dot-inner:nth-child(12) { transform: translate(-50%,-50%) rotate(292.5deg) translateY(-110px); }
+
+/* ── ABOUT ── */
+.about { background: var(--surface); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 3rem; align-items: center; margin-top: 2.5rem;
+}
+.tile-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+}
+.tile {
+  aspect-ratio: 1; border-radius: var(--r);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 1rem; text-align: center;
+}
+.tile .t-icon { font-size: 2.1rem; }
+.tile .t-label { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.tile:nth-child(1) { background: color-mix(in srgb, var(--primary) 11%, var(--bg)); }
+.tile:nth-child(2) { background: color-mix(in srgb, var(--accent)  16%, var(--bg)); margin-top: 1.5rem; }
+.tile:nth-child(3) { background: color-mix(in srgb, var(--pop)     11%, var(--bg)); }
+.tile:nth-child(4) { background: color-mix(in srgb, var(--teal)    13%, var(--bg)); margin-top: -1.5rem; }
+
+.about-copy h3 {
+  font-family: var(--ff-head); font-size: 1.05rem;
+  font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;
+}
+.about-copy p {
+  font-size: 0.93rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 1.2rem;
+}
+.pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.pill {
+  padding: 0.32rem 0.85rem; border-radius: 30px;
+  font-size: 0.78rem; font-weight: 700;
+  background: color-mix(in srgb, var(--primary) 11%, var(--bg));
+  color: var(--primary);
+}
+
+/* ── CURRICULUM ── */
+.curriculum { background: var(--bg-alt); }
+.levels {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.25rem; margin-top: 2.5rem;
+}
+.level {
+  background: var(--surface);
+  border-radius: var(--r);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.level:nth-child(1) { border-top-color: var(--teal); }
+.level:nth-child(2) { border-top-color: var(--accent); }
+.level:nth-child(3) { border-top-color: var(--pop); }
+.lv-farsi { font-size: 1.35rem; direction: rtl; color: var(--muted); line-height: 1.3; }
+.lv-en { font-family: var(--ff-head); font-size: 1.18rem; font-weight: 700; }
+.lv-tag {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.22rem 0.7rem; border-radius: 30px; margin-bottom: 0.25rem;
+}
+.level:nth-child(1) .lv-tag { background: color-mix(in srgb, var(--teal)   14%, var(--bg)); color: var(--teal); }
+.level:nth-child(2) .lv-tag { background: color-mix(in srgb, var(--accent) 16%, var(--bg)); color: color-mix(in srgb, var(--accent) 85%, #000); }
+.level:nth-child(3) .lv-tag { background: color-mix(in srgb, var(--pop)    12%, var(--bg)); color: var(--pop); }
+.lv-items { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.25rem; }
+.lv-items li {
+  font-size: 0.875rem; color: var(--muted);
+  padding-left: 1.25rem; position: relative;
+}
+.lv-items li::before {
+  content: '✦'; position: absolute; left: 0;
+  font-size: 0.55rem; top: 0.35em; opacity: .55;
+}
+.level:nth-child(1) li::before { color: var(--teal); }
+.level:nth-child(2) li::before { color: var(--accent); }
+.level:nth-child(3) li::before { color: var(--pop); }
+
+/* ── ENROLLMENT ── */
+.enrollment { background: var(--surface); }
+.enroll-grid {
+  display: grid; grid-template-columns: 1fr 1.45fr;
+  gap: 3rem; align-items: start; margin-top: 2.5rem;
+}
+.enroll-info h4 {
+  font-family: var(--ff-head); font-size: 1rem;
+  font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;
+}
+.enroll-info > p {
+  font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem;
+}
+.info-card {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  padding: 0.85rem 1rem; background: var(--bg);
+  border-radius: 10px; margin-bottom: 0.75rem;
+}
+.info-card .ic { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; }
+.info-card strong { display: block; font-size: 0.83rem; font-weight: 700; }
+.info-card span  { font-size: 0.82rem; color: var(--muted); }
+
+/* Form */
+.form-wrap {
+  background: var(--bg);
+  border-radius: var(--r); padding: 2rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.fg { display: flex; flex-direction: column; gap: 0.35rem; }
+.fg label { font-size: 0.82rem; font-weight: 700; }
+.fg input, .fg select, .fg textarea {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--surface); color: var(--text);
+  font-family: var(--ff-body); font-size: 0.9rem; outline: none;
+  transition: border-color .15s;
+  appearance: none; -webkit-appearance: none;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--primary); }
+.fg textarea { resize: vertical; min-height: 88px; }
+.form-note {
+  font-size: 0.78rem; color: var(--muted); line-height: 1.5;
+}
+.form-note a { color: var(--primary); text-decoration: none; }
+.submit-btn {
+  background: var(--primary); color: #fff;
+  border: none; border-radius: 30px;
+  padding: 0.82rem 2rem;
+  font-family: var(--ff-body); font-size: 1rem; font-weight: 700;
+  cursor: pointer; align-self: flex-start;
+  transition: background .15s, transform .15s;
+}
+.submit-btn:hover { background: color-mix(in srgb, var(--primary) 82%, #000); transform: translateY(-1px); }
+.success-msg {
+  display: none; text-align: center; padding: 2rem 1rem;
+  font-family: var(--ff-head); font-size: 1.2rem; font-weight: 700;
+  color: var(--teal); line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--primary);
+  color: rgba(255,255,255,.78);
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+.foot-logo {
+  font-size: 1.5rem; direction: rtl; color: white;
+  display: block; margin-bottom: 0.25rem;
+}
+.foot-sub {
+  font-family: var(--ff-head); font-size: 0.85rem; font-weight: 600;
+  color: rgba(255,255,255,.65); letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 0.75rem;
+}
+footer p { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; }
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+  .nav { padding: 0.6rem 1rem; }
+  .nav-links { display: none; }
+  .hero {
+    grid-template-columns: 1fr; padding: 3rem 1.25rem; min-height: auto;
+  }
+  .hero-visual { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .tile-grid { order: -1; }
+  .levels { grid-template-columns: 1fr; }
+  .enroll-grid { grid-template-columns: 1fr; }
+  .row2 { grid-template-columns: 1fr; }
+  .section { padding: 3rem 1.25rem; }
+}
+</style>
+
+<!-- ─── Navigation ─── -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <a href="#" class="brand">
+    <div class="brand-mark">ن</div>
+    <div class="brand-name">
+      Noor Farsi School
+      <small>مدرسه فارسی نور</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#enroll" class="nav-cta">Enroll Now</a></li>
+  </ul>
+</nav>
+
+<!-- ─── Hero ─── -->
+<section class="hero" aria-label="Welcome">
+  <div class="hero-content">
+    <div class="hero-badge">🌟 Farsi for the Next Generation</div>
+    <h1>Where Young Hearts Learn the <em>Language of Light</em></h1>
+    <p>A homeschool-style Farsi program helping Persian-American children connect with their heritage — through stories, songs, and real conversation.</p>
+    <div class="btn-row">
+      <a href="#enroll" class="btn btn-gold">Enroll Your Child</a>
+      <a href="#about"  class="btn btn-ghost">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="ornament">
+      <div class="o-ring"></div>
+      <div class="o-ring"></div>
+      <div class="o-ring"></div>
+      <div class="o-word">نور<span>Noor · Light</span></div>
+      <div class="o-orbit">
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot"></div>
+        <div class="o-dot-inner"></div>
+        <div class="o-dot-inner"></div>
+        <div class="o-dot-inner"></div>
+        <div class="o-dot-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── About ─── -->
+<section class="section about" id="about">
+  <div class="inner">
+    <div class="eyebrow">درباره ما · About Us</div>
+    <h2 class="section-title">A School Built Around Your Child</h2>
+    <p class="section-sub">Noor Farsi School is a small, dedicated program where children learn Farsi the way it was meant to be learned — joyfully, with meaning, and rooted in culture.</p>
+    <div class="about-grid">
+      <div class="tile-grid" aria-hidden="true">
+        <div class="tile"><div class="t-icon">📚</div><div class="t-label">Story-Based Learning</div></div>
+        <div class="tile"><div class="t-icon">🎵</div><div class="t-label">Songs &amp; Rhymes</div></div>
+        <div class="tile"><div class="t-icon">✍️</div><div class="t-label">Script &amp; Writing</div></div>
+        <div class="tile"><div class="t-icon">💬</div><div class="t-label">Live Conversation</div></div>
+      </div>
+      <div class="about-copy">
+        <h3>Our Mission</h3>
+        <p>We believe every Persian-American child deserves to hold their language close — to read their grandparents' letters, to understand the poetry of Hafez, and to feel at home in both worlds.</p>
+        <h3>How We Teach</h3>
+        <p>Classes are small and welcoming, with a warm homeschool spirit. Each session blends speaking, listening, reading, and writing — all within the context of Persian culture and storytelling. No rote drills. Real language, real connection.</p>
+        <h3>Who It's For</h3>
+        <p>Children ages 5–14, at any level. Whether your child has never heard Farsi spoken, or already speaks it at home but can't yet read it — there is a place for them here.</p>
+        <div class="pills">
+          <span class="pill">Ages 5–14</span>
+          <span class="pill">Small Classes</span>
+          <span class="pill">All Levels</span>
+          <span class="pill">Cultural Immersion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Curriculum ─── -->
+<section class="section curriculum" id="curriculum">
+  <div class="inner">
+    <div class="eyebrow">برنامه درسی · Curriculum</div>
+    <h2 class="section-title">Three Levels, One Journey</h2>
+    <p class="section-sub">Each level builds gently on the last, keeping children engaged and moving forward at the right pace.</p>
+    <div class="levels">
+
+      <article class="level">
+        <div class="lv-farsi">نور کوچک</div>
+        <div class="lv-en">Little Light</div>
+        <span class="lv-tag">Beginner · Ages 5–7</span>
+        <ul class="lv-items">
+          <li>Persian alphabet — letters and sounds</li>
+          <li>Numbers, colors, animals, and family words</li>
+          <li>Simple songs and nursery rhymes</li>
+          <li>Basic everyday phrases and greetings</li>
+          <li>Visual games and hands-on activities</li>
+        </ul>
+      </article>
+
+      <article class="level">
+        <div class="lv-farsi">نور رشد</div>
+        <div class="lv-en">Growing Light</div>
+        <span class="lv-tag">Intermediate · Ages 8–11</span>
+        <ul class="lv-items">
+          <li>Reading connected text and short stories</li>
+          <li>Writing sentences and short paragraphs</li>
+          <li>Vocabulary through Persian folktales</li>
+          <li>Everyday conversation practice</li>
+          <li>Introduction to Persian poetry</li>
+        </ul>
+      </article>
+
+      <article class="level">
+        <div class="lv-farsi">نور درخشان</div>
+        <div class="lv-en">Bright Light</div>
+        <span class="lv-tag">Advanced · Ages 12–14</span>
+        <ul class="lv-items">
+          <li>Reading literature and longer prose</li>
+          <li>Expressive and descriptive writing</li>
+          <li>Classical poetry — Hafez &amp; Rumi</li>
+          <li>Persian cultural history and traditions</li>
+          <li>Independent reading projects</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Enrollment ─── -->
+<section class="section enrollment" id="enroll">
+  <div class="inner">
+    <div class="eyebrow">ثبت‌نام · Enrollment</div>
+    <h2 class="section-title">Reserve Your Child's Spot</h2>
+    <p class="section-sub">Classes fill quickly. Send us a message and we'll find the right fit for your child.</p>
+    <div class="enroll-grid">
+
+      <div class="enroll-info">
+        <h4>What to Expect</h4>
+        <p>After you submit this form, we'll reach out within 48 hours to discuss your child's level, schedule your placement call, and share available session times.</p>
+        <div class="info-card">
+          <div class="ic">📅</div>
+          <div><strong>Schedule</strong><span>Weekly sessions — current openings shared when we connect.</span></div>
+        </div>
+        <div class="info-card">
+          <div class="ic">👥</div>
+          <div><strong>Class Size</strong><span>Small groups of 4–6 students per level for personal attention.</span></div>
+        </div>
+        <div class="info-card">
+          <div class="ic">💻</div>
+          <div><strong>Format</strong><span>Online via Zoom — accessible from anywhere in the US.</span></div>
+        </div>
+        <div class="info-card">
+          <div class="ic">✉️</div>
+          <div><strong>Direct Contact</strong><span>noorfarsi@gmail.com</span></div>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <form id="enrollForm">
+          <div class="row2">
+            <div class="fg">
+              <label for="childName">Child's First Name</label>
+              <input type="text" id="childName" autocomplete="off" placeholder="e.g. Daria" required>
+            </div>
+            <div class="fg">
+              <label for="childAge">Child's Age</label>
+              <input type="number" id="childAge" min="5" max="14" placeholder="5 – 14" required>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="fg">
+              <label for="parentName">Your Name</label>
+              <input type="text" id="parentName" autocomplete="name" placeholder="Parent / guardian" required>
+            </div>
+            <div class="fg">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" autocomplete="email" placeholder="you@email.com" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="level">Level Interest</label>
+            <select id="level">
+              <option value="">— Help me choose the right level —</option>
+              <option value="little">نور کوچک — Little Light (Beginner, ages 5–7)</option>
+              <option value="growing">نور رشد — Growing Light (Intermediate, ages 8–11)</option>
+              <option value="bright">نور درخشان — Bright Light (Advanced, ages 12–14)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="message">Anything to share? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <textarea id="message" placeholder="Your child's current Farsi level, any questions, or whatever's on your mind…"></textarea>
+          </div>
+          <p class="form-note">By submitting this form you agree to be contacted about enrollment at Noor Farsi School.</p>
+          <button type="submit" class="submit-btn">Send Enrollment Request →</button>
+        </form>
+        <div class="success-msg" id="successMsg" role="alert" hidden>
+          🌟 شکرگزاریم! Thank you!<br>
+          <span style="font-size:0.95rem;font-weight:500;color:var(--muted)">We'll be in touch within 48 hours to find the perfect fit for your child.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer>
+  <span class="foot-logo">مدرسه فارسی نور</span>
+  <div class="foot-sub">Noor Farsi School</div>
+  <p>A homeschool Farsi program for Persian-American families &middot; &copy; 2026</p>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // Form submit (static demo — shows confirmation)
+  document.getElementById('enrollForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('enrollForm').hidden = true;
+    document.getElementById('successMsg').hidden = false;
+  });
+</script>
