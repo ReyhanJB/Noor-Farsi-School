@@ -1,234 +1,172 @@
 <title>Noor Farsi School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ── Design Tokens ── */
+/* ── Tokens ── */
 :root {
-  --bg:        #FFF3EC;
-  --bg-alt:    #FEF8F4;
-  --surface:   #FFFFFF;
-  --primary:   #1D5FA6;
-  --accent:    #F5A623;
-  --pop:       #D94740;
-  --teal:      #2AADA0;
-  --text:      #1C1C3A;
-  --muted:     #6B6B8A;
-  --border:    #E8D4C3;
-  --shadow:    0 2px 18px rgba(28,28,58,0.09);
-  --r:         16px;
-  --ff-head:   'Baloo 2', cursive;
-  --ff-body:   'Nunito', sans-serif;
+  --bg:      #FFF3EC;
+  --bg-alt:  #FEF8F4;
+  --surface: #FFFFFF;
+  --primary: #1D5FA6;
+  --accent:  #F5A623;
+  --pop:     #D94740;
+  --teal:    #2AADA0;
+  --text:    #1C1C3A;
+  --muted:   #6B6B8A;
+  --border:  #E8D4C3;
+  --shadow:  0 2px 18px rgba(28,28,58,0.09);
+  --r:       16px;
+  --ff-head: 'Baloo 2', cursive;
+  --ff-body: 'Nunito', sans-serif;
 }
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:      #0D1B2F;
-    --bg-alt:  #122039;
-    --surface: #18293F;
-    --primary: #5499D6;
-    --accent:  #F5A623;
-    --pop:     #E86A65;
-    --teal:    #3DBDB0;
-    --text:    #EEE8E1;
-    --muted:   #8E8FAA;
-    --border:  #283A52;
-    --shadow:  0 2px 18px rgba(0,0,0,0.35);
+    --bg:      #0D1B2F; --bg-alt:  #122039; --surface: #18293F;
+    --primary: #5499D6; --accent:  #F5A623; --pop:     #E86A65;
+    --teal:    #3DBDB0; --text:    #EEE8E1; --muted:   #8E8FAA;
+    --border:  #283A52; --shadow:  0 2px 18px rgba(0,0,0,0.35);
   }
 }
 :root[data-theme="dark"] {
-  --bg:      #0D1B2F;
-  --bg-alt:  #122039;
-  --surface: #18293F;
-  --primary: #5499D6;
-  --accent:  #F5A623;
-  --pop:     #E86A65;
-  --teal:    #3DBDB0;
-  --text:    #EEE8E1;
-  --muted:   #8E8FAA;
-  --border:  #283A52;
-  --shadow:  0 2px 18px rgba(0,0,0,0.35);
+  --bg:      #0D1B2F; --bg-alt:  #122039; --surface: #18293F;
+  --primary: #5499D6; --accent:  #F5A623; --pop:     #E86A65;
+  --teal:    #3DBDB0; --text:    #EEE8E1; --muted:   #8E8FAA;
+  --border:  #283A52; --shadow:  0 2px 18px rgba(0,0,0,0.35);
 }
 
 /* ── Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: var(--ff-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  padding-inline: 0;
+  background: var(--bg); color: var(--text);
+  line-height: 1.65; padding-inline: 0;
+  transition: font-family 0.1s;
 }
 img { max-width: 100%; }
 a { color: inherit; }
 
+/* ── Farsi mode ── */
+body.is-fa {
+  font-family: 'Vazirmatn', sans-serif;
+  line-height: 1.85;
+}
+body.is-fa .section-title,
+body.is-fa .about-copy h3,
+body.is-fa .enroll-info h4,
+body.is-fa .lv-en,
+body.is-fa .brand-name,
+body.is-fa .hero h1,
+body.is-fa .foot-sub-text {
+  font-family: 'Vazirmatn', sans-serif;
+}
+body.is-fa .hero-badge,
+body.is-fa .eyebrow,
+body.is-fa .nav-links a,
+body.is-fa .pill,
+body.is-fa .lv-tag,
+body.is-fa .info-card strong,
+body.is-fa .form-note,
+body.is-fa .fg label {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
 /* ── Nav ── */
 .nav {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 99;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 2rem;
-  gap: 1rem;
+  position: sticky; top: env(safe-area-inset-top,0px); z-index: 99;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.7rem 2rem; gap: 1rem;
 }
-.brand {
-  display: flex; align-items: center; gap: 0.55rem;
-  text-decoration: none; color: var(--text);
-}
+.brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--text); }
 .brand-mark {
-  width: 38px; height: 38px;
-  background: var(--primary);
-  border-radius: 11px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.15rem; color: white; line-height: 1;
+  width: 38px; height: 38px; background: var(--primary); border-radius: 11px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: white;
 }
-.brand-name {
-  font-family: var(--ff-head);
-  font-size: 1rem; font-weight: 700; line-height: 1.2;
-}
-.brand-name small {
-  display: block; font-size: 0.62rem; font-weight: 500;
-  color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
-}
-.nav-links {
-  display: flex; list-style: none; gap: 0.15rem; align-items: center;
-}
+.brand-name { font-family: var(--ff-head); font-size: 1rem; font-weight: 700; line-height: 1.2; }
+.brand-name small { display: block; font-size: 0.62rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 0.5rem; }
+.nav-links { display: flex; list-style: none; gap: 0.15rem; align-items: center; }
 .nav-links a {
-  display: block; padding: 0.4rem 0.9rem;
-  text-decoration: none; color: var(--muted);
-  font-size: 0.9rem; font-weight: 600; border-radius: 8px;
-  transition: color .15s, background .15s;
+  display: block; padding: 0.4rem 0.9rem; text-decoration: none; color: var(--muted);
+  font-size: 0.9rem; font-weight: 600; border-radius: 8px; transition: color .15s, background .15s;
 }
 .nav-links a:hover { color: var(--primary); background: color-mix(in srgb, var(--primary) 8%, transparent); }
-.nav-cta {
-  background: var(--accent) !important; color: #1C1C3A !important;
-  border-radius: 30px !important; font-weight: 700 !important;
-}
+.nav-cta { background: var(--accent) !important; color: #1C1C3A !important; border-radius: 30px !important; font-weight: 700 !important; }
 .nav-cta:hover { filter: brightness(0.93) !important; }
 
-/* ── Shared section layout ── */
+/* Language toggle */
+.lang-btn {
+  background: color-mix(in srgb, var(--primary) 10%, var(--bg));
+  color: var(--primary);
+  border: 1.5px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  border-radius: 30px; padding: 0.35rem 0.85rem;
+  font-family: var(--ff-body); font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; transition: background .15s; white-space: nowrap; flex-shrink: 0;
+  display: flex; align-items: center; gap: 0.35rem;
+}
+.lang-btn:hover { background: color-mix(in srgb, var(--primary) 18%, var(--bg)); }
+.lang-btn::before { content: '🌐'; font-size: 0.85rem; }
+body.is-fa .lang-btn { font-family: 'Vazirmatn', sans-serif; }
+
+/* ── Shared section ── */
 .section { padding: 4.5rem 2rem; }
 .inner { max-width: 1020px; margin-inline: auto; }
-.eyebrow {
-  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--teal); margin-bottom: 0.45rem;
-}
-.section-title {
-  font-family: var(--ff-head);
-  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
-  font-weight: 800; line-height: 1.2;
-  text-wrap: balance; margin-bottom: 0.75rem;
-}
-.section-sub {
-  font-size: 1rem; color: var(--muted);
-  max-width: 52ch; line-height: 1.75;
-}
+.eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.45rem; }
+body.is-fa .eyebrow { letter-spacing: 0; }
+.section-title { font-family: var(--ff-head); font-size: clamp(1.6rem,3.5vw,2.3rem); font-weight: 800; line-height: 1.2; text-wrap: balance; margin-bottom: 0.75rem; }
+.section-sub { font-size: 1rem; color: var(--muted); max-width: 52ch; line-height: 1.75; }
 
-/* ── HERO ── */
+/* ── Hero ── */
 .hero {
-  background: var(--primary);
-  color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-  padding: 5rem 2rem;
-  min-height: 500px;
-  position: relative; overflow: hidden;
+  background: var(--primary); color: #fff;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 2rem; padding: 5rem 2rem;
+  min-height: 500px; position: relative; overflow: hidden;
 }
 .hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 72% 55%, rgba(245,166,35,.18) 0%, transparent 60%),
-    radial-gradient(ellipse at 18% 15%, rgba(42,173,160,.15) 0%, transparent 55%);
-  pointer-events: none;
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 72% 55%,rgba(245,166,35,.18) 0%,transparent 60%),
+              radial-gradient(ellipse at 18% 15%,rgba(42,173,160,.15) 0%,transparent 55%);
 }
 .hero-content { position: relative; z-index: 1; max-width: 520px; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  background: rgba(245,166,35,.18);
-  border: 1px solid rgba(245,166,35,.38);
-  color: var(--accent);
-  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.3rem 0.9rem;
-  border-radius: 30px; margin-bottom: 1.3rem;
+  background: rgba(245,166,35,.18); border: 1px solid rgba(245,166,35,.38); color: var(--accent);
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.3rem 0.9rem; border-radius: 30px; margin-bottom: 1.3rem;
 }
-.hero h1 {
-  font-family: var(--ff-head);
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  font-weight: 800; line-height: 1.17;
-  text-wrap: balance; margin-bottom: 1.1rem;
-}
+body.is-fa .hero-badge { letter-spacing: 0; font-size: 0.85rem; }
+.hero h1 { font-family: var(--ff-head); font-size: clamp(1.9rem,4vw,3rem); font-weight: 800; line-height: 1.2; text-wrap: balance; margin-bottom: 1.1rem; }
+body.is-fa .hero h1 { line-height: 1.5; }
 .hero h1 em { font-style: normal; color: var(--accent); }
-.hero p {
-  font-size: 1.05rem; line-height: 1.7;
-  color: rgba(255,255,255,.8);
-  max-width: 42ch; margin-bottom: 2rem;
-}
+.hero p { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,.8); max-width: 42ch; margin-bottom: 2rem; }
 .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .btn {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.72rem 1.55rem;
-  border-radius: 30px;
+  padding: 0.72rem 1.55rem; border-radius: 30px;
   font-family: var(--ff-body); font-weight: 700; font-size: 0.95rem;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: transform .15s, box-shadow .15s, filter .15s;
+  text-decoration: none; border: none; cursor: pointer; transition: transform .15s, filter .15s;
 }
+body.is-fa .btn { font-family: 'Vazirmatn', sans-serif; }
 .btn:hover { transform: translateY(-2px); }
 .btn-gold  { background: var(--accent); color: #1C1C3A; box-shadow: 0 4px 18px rgba(245,166,35,.4); }
 .btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.38); }
 .btn-ghost:hover { background: rgba(255,255,255,.1); }
 
-/* Hero ornament — spinning noor ring */
-.hero-visual {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; justify-content: center;
-}
-.ornament {
-  position: relative;
-  width: 280px; height: 280px;
-}
-.o-ring {
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  border: 1.5px solid rgba(245,166,35,.32);
-}
+/* Hero ornament */
+.hero-visual { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; }
+.ornament { position: relative; width: 280px; height: 280px; }
+.o-ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(245,166,35,.32); }
 .o-ring:nth-child(2) { inset: 22px; border-color: rgba(42,173,160,.28); border-style: dashed; }
 .o-ring:nth-child(3) { inset: 44px; border-color: rgba(245,166,35,.2); }
-.o-word {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  font-size: 4.8rem; line-height: 1;
-  color: white;
-  text-shadow: 0 0 48px rgba(245,166,35,.55);
-}
-.o-word span {
-  display: block;
-  font-family: var(--ff-head);
-  font-size: 0.82rem; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--accent); text-shadow: none;
-  margin-top: 0.6rem;
-}
-.o-orbit {
-  position: absolute; inset: 0;
-  animation: spin 28s linear infinite;
-}
+.o-word { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 4.8rem; line-height: 1; color: white; text-shadow: 0 0 48px rgba(245,166,35,.55); }
+.o-word span { display: block; font-family: var(--ff-head); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); text-shadow: none; margin-top: 0.6rem; }
+.o-orbit { position: absolute; inset: 0; animation: spin 28s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .o-orbit { animation: none; } }
 @keyframes spin { to { transform: rotate(360deg); } }
-.o-dot {
-  position: absolute;
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent); opacity: .72;
-  top: 50%; left: 50%;
-}
+.o-dot { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .72; top: 50%; left: 50%; }
 .o-dot:nth-child(1) { transform: translate(-50%,-50%) rotate(0deg)   translateY(-140px); }
 .o-dot:nth-child(2) { transform: translate(-50%,-50%) rotate(45deg)  translateY(-140px); }
 .o-dot:nth-child(3) { transform: translate(-50%,-50%) rotate(90deg)  translateY(-140px); }
@@ -237,206 +175,116 @@ a { color: inherit; }
 .o-dot:nth-child(6) { transform: translate(-50%,-50%) rotate(225deg) translateY(-140px); }
 .o-dot:nth-child(7) { transform: translate(-50%,-50%) rotate(270deg) translateY(-140px); }
 .o-dot:nth-child(8) { transform: translate(-50%,-50%) rotate(315deg) translateY(-140px); }
-/* Teal accent dots (inner) */
-.o-dot-inner {
-  position: absolute;
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--teal); opacity: .6;
-  top: 50%; left: 50%;
-}
+.o-dot-inner { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); opacity: .6; top: 50%; left: 50%; }
 .o-dot-inner:nth-child(9)  { transform: translate(-50%,-50%) rotate(22.5deg)  translateY(-110px); }
 .o-dot-inner:nth-child(10) { transform: translate(-50%,-50%) rotate(112.5deg) translateY(-110px); }
 .o-dot-inner:nth-child(11) { transform: translate(-50%,-50%) rotate(202.5deg) translateY(-110px); }
 .o-dot-inner:nth-child(12) { transform: translate(-50%,-50%) rotate(292.5deg) translateY(-110px); }
 
-/* ── ABOUT ── */
+/* ── About ── */
 .about { background: var(--surface); }
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1.1fr;
-  gap: 3rem; align-items: center; margin-top: 2.5rem;
-}
-.tile-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
-}
-.tile {
-  aspect-ratio: 1; border-radius: var(--r);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 0.5rem; padding: 1rem; text-align: center;
-}
+.about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: center; margin-top: 2.5rem; }
+.tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.tile { aspect-ratio: 1; border-radius: var(--r); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; text-align: center; }
 .tile .t-icon { font-size: 2.1rem; }
-.tile .t-label { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.tile .t-label { font-size: 0.8rem; font-weight: 700; }
+body.is-fa .tile .t-label { font-family: 'Vazirmatn', sans-serif; font-size: 0.85rem; }
 .tile:nth-child(1) { background: color-mix(in srgb, var(--primary) 11%, var(--bg)); }
 .tile:nth-child(2) { background: color-mix(in srgb, var(--accent)  16%, var(--bg)); margin-top: 1.5rem; }
 .tile:nth-child(3) { background: color-mix(in srgb, var(--pop)     11%, var(--bg)); }
 .tile:nth-child(4) { background: color-mix(in srgb, var(--teal)    13%, var(--bg)); margin-top: -1.5rem; }
-
-.about-copy h3 {
-  font-family: var(--ff-head); font-size: 1.05rem;
-  font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;
-}
-.about-copy p {
-  font-size: 0.93rem; color: var(--muted);
-  line-height: 1.75; margin-bottom: 1.2rem;
-}
+.about-copy h3 { font-family: var(--ff-head); font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
+.about-copy p  { font-size: 0.93rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
 .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-.pill {
-  padding: 0.32rem 0.85rem; border-radius: 30px;
-  font-size: 0.78rem; font-weight: 700;
-  background: color-mix(in srgb, var(--primary) 11%, var(--bg));
-  color: var(--primary);
-}
+.pill { padding: 0.32rem 0.85rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700; background: color-mix(in srgb, var(--primary) 11%, var(--bg)); color: var(--primary); }
+body.is-fa .pill { font-size: 0.82rem; }
 
-/* ── CURRICULUM ── */
+/* ── Curriculum ── */
 .curriculum { background: var(--bg-alt); }
-.levels {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 1.25rem; margin-top: 2.5rem;
-}
-.level {
-  background: var(--surface);
-  border-radius: var(--r);
-  padding: 1.75rem;
-  box-shadow: var(--shadow);
-  border-top: 4px solid var(--border);
-  display: flex; flex-direction: column; gap: 0.5rem;
-}
+.levels { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.level { background: var(--surface); border-radius: var(--r); padding: 1.75rem; box-shadow: var(--shadow); border-top: 4px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem; }
 .level:nth-child(1) { border-top-color: var(--teal); }
 .level:nth-child(2) { border-top-color: var(--accent); }
 .level:nth-child(3) { border-top-color: var(--pop); }
 .lv-farsi { font-size: 1.35rem; direction: rtl; color: var(--muted); line-height: 1.3; }
 .lv-en { font-family: var(--ff-head); font-size: 1.18rem; font-weight: 700; }
-.lv-tag {
-  display: inline-block;
-  font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  padding: 0.22rem 0.7rem; border-radius: 30px; margin-bottom: 0.25rem;
-}
-.level:nth-child(1) .lv-tag { background: color-mix(in srgb, var(--teal)   14%, var(--bg)); color: var(--teal); }
-.level:nth-child(2) .lv-tag { background: color-mix(in srgb, var(--accent) 16%, var(--bg)); color: color-mix(in srgb, var(--accent) 85%, #000); }
-.level:nth-child(3) .lv-tag { background: color-mix(in srgb, var(--pop)    12%, var(--bg)); color: var(--pop); }
+.lv-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.22rem 0.7rem; border-radius: 30px; margin-bottom: 0.25rem; }
+body.is-fa .lv-tag { letter-spacing: 0; font-size: 0.78rem; font-family: 'Vazirmatn', sans-serif; }
+.level:nth-child(1) .lv-tag { background: color-mix(in srgb,var(--teal)   14%,var(--bg)); color: var(--teal); }
+.level:nth-child(2) .lv-tag { background: color-mix(in srgb,var(--accent) 16%,var(--bg)); color: color-mix(in srgb,var(--accent) 85%,#000); }
+.level:nth-child(3) .lv-tag { background: color-mix(in srgb,var(--pop)    12%,var(--bg)); color: var(--pop); }
 .lv-items { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.25rem; }
-.lv-items li {
-  font-size: 0.875rem; color: var(--muted);
-  padding-left: 1.25rem; position: relative;
-}
-.lv-items li::before {
-  content: '✦'; position: absolute; left: 0;
-  font-size: 0.55rem; top: 0.35em; opacity: .55;
-}
+.lv-items li { font-size: 0.875rem; color: var(--muted); padding-inline-start: 1.25rem; position: relative; }
+body.is-fa .lv-items li { font-size: 0.9rem; }
+.lv-items li::before { content: '✦'; position: absolute; inset-inline-start: 0; font-size: 0.55rem; top: 0.35em; opacity: .55; }
 .level:nth-child(1) li::before { color: var(--teal); }
 .level:nth-child(2) li::before { color: var(--accent); }
 .level:nth-child(3) li::before { color: var(--pop); }
 
-/* ── SCHEDULE ── */
+/* ── Schedule ── */
 .schedule { background: var(--bg-alt); }
-.cal-wrap {
-  margin-top: 2.5rem;
-  border-radius: var(--r);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  background: var(--surface);
-  position: relative;
-}
-.cal-wrap iframe {
-  display: block;
-  width: 100%;
-  height: 560px;
-  border: none;
-}
-.cal-note {
-  padding: 0.75rem 1.25rem;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  font-size: 0.8rem;
-  color: var(--muted);
-}
+.cal-wrap { margin-top: 2.5rem; border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); background: var(--surface); }
+.cal-wrap iframe { display: block; width: 100%; height: 560px; border: none; }
+.cal-note { padding: 0.75rem 1.25rem; background: var(--surface); border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+body.is-fa .cal-note { font-family: 'Vazirmatn', sans-serif; font-size: 0.85rem; }
 
-/* ── ENROLLMENT ── */
+/* ── Enrollment ── */
 .enrollment { background: var(--surface); }
-.enroll-grid {
-  display: grid; grid-template-columns: 1fr 1.45fr;
-  gap: 3rem; align-items: start; margin-top: 2.5rem;
-}
-.enroll-info h4 {
-  font-family: var(--ff-head); font-size: 1rem;
-  font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;
-}
-.enroll-info > p {
-  font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem;
-}
-.info-card {
-  display: flex; gap: 0.75rem; align-items: flex-start;
-  padding: 0.85rem 1rem; background: var(--bg);
-  border-radius: 10px; margin-bottom: 0.75rem;
-}
+.enroll-grid { display: grid; grid-template-columns: 1fr 1.45fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
+.enroll-info h4 { font-family: var(--ff-head); font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem; }
+.enroll-info > p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.info-card { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.85rem 1rem; background: var(--bg); border-radius: 10px; margin-bottom: 0.75rem; }
 .info-card .ic { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; }
 .info-card strong { display: block; font-size: 0.83rem; font-weight: 700; }
 .info-card span  { font-size: 0.82rem; color: var(--muted); }
+body.is-fa .info-card strong,
+body.is-fa .info-card span { font-family: 'Vazirmatn', sans-serif; }
+body.is-fa .info-card strong { font-size: 0.88rem; }
+body.is-fa .info-card span  { font-size: 0.88rem; }
 
 /* Form */
-.form-wrap {
-  background: var(--bg);
-  border-radius: var(--r); padding: 2rem;
-  display: flex; flex-direction: column; gap: 1rem;
-}
+.form-wrap { background: var(--bg); border-radius: var(--r); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 .fg { display: flex; flex-direction: column; gap: 0.35rem; }
 .fg label { font-size: 0.82rem; font-weight: 700; }
 .fg input, .fg select, .fg textarea {
-  padding: 0.65rem 0.9rem;
-  border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 0.65rem 0.9rem; border: 1.5px solid var(--border); border-radius: 10px;
   background: var(--surface); color: var(--text);
   font-family: var(--ff-body); font-size: 0.9rem; outline: none;
-  transition: border-color .15s;
-  appearance: none; -webkit-appearance: none;
+  transition: border-color .15s; appearance: none; -webkit-appearance: none;
 }
+body.is-fa .fg label,
+body.is-fa .fg input,
+body.is-fa .fg select,
+body.is-fa .fg textarea { font-family: 'Vazirmatn', sans-serif; font-size: 0.95rem; }
 .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--primary); }
 .fg textarea { resize: vertical; min-height: 88px; }
-.form-note {
-  font-size: 0.78rem; color: var(--muted); line-height: 1.5;
-}
-.form-note a { color: var(--primary); text-decoration: none; }
+.form-note { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+body.is-fa .form-note { font-family: 'Vazirmatn', sans-serif; font-size: 0.83rem; }
 .submit-btn {
-  background: var(--primary); color: #fff;
-  border: none; border-radius: 30px;
-  padding: 0.82rem 2rem;
-  font-family: var(--ff-body); font-size: 1rem; font-weight: 700;
-  cursor: pointer; align-self: flex-start;
-  transition: background .15s, transform .15s;
+  background: var(--primary); color: #fff; border: none; border-radius: 30px;
+  padding: 0.82rem 2rem; font-family: var(--ff-body); font-size: 1rem; font-weight: 700;
+  cursor: pointer; align-self: flex-start; transition: background .15s, transform .15s;
 }
-.submit-btn:hover { background: color-mix(in srgb, var(--primary) 82%, #000); transform: translateY(-1px); }
-.success-msg {
-  display: none; text-align: center; padding: 2rem 1rem;
-  font-family: var(--ff-head); font-size: 1.2rem; font-weight: 700;
-  color: var(--teal); line-height: 1.5;
-}
+body.is-fa .submit-btn { font-family: 'Vazirmatn', sans-serif; }
+.submit-btn:hover { background: color-mix(in srgb,var(--primary) 82%,#000); transform: translateY(-1px); }
+.success-msg { display: none; text-align: center; padding: 2rem 1rem; font-family: var(--ff-head); font-size: 1.2rem; font-weight: 700; color: var(--teal); line-height: 1.5; }
+body.is-fa .success-msg { font-family: 'Vazirmatn', sans-serif; }
+.success-msg.visible { display: block; }
 
-/* ── FOOTER ── */
-footer {
-  background: var(--primary);
-  color: rgba(255,255,255,.78);
-  text-align: center;
-  padding: 2.5rem 2rem;
-}
-.foot-logo {
-  font-size: 1.5rem; direction: rtl; color: white;
-  display: block; margin-bottom: 0.25rem;
-}
-.foot-sub {
-  font-family: var(--ff-head); font-size: 0.85rem; font-weight: 600;
-  color: rgba(255,255,255,.65); letter-spacing: 0.06em;
-  text-transform: uppercase; margin-bottom: 0.75rem;
-}
-footer p { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; }
+/* ── Footer ── */
+footer { background: var(--primary); color: rgba(255,255,255,.78); text-align: center; padding: 2.5rem 2rem; }
+.foot-logo { font-size: 1.5rem; direction: rtl; color: white; display: block; margin-bottom: 0.25rem; }
+.foot-sub-text { font-family: var(--ff-head); font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,.65); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+body.is-fa .foot-sub-text { letter-spacing: 0; }
+.foot-copy { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; }
+body.is-fa .foot-copy { font-family: 'Vazirmatn', sans-serif; font-size: 0.85rem; }
 
 /* ── Responsive ── */
 @media (max-width: 680px) {
   .nav { padding: 0.6rem 1rem; }
   .nav-links { display: none; }
-  .hero {
-    grid-template-columns: 1fr; padding: 3rem 1.25rem; min-height: auto;
-  }
+  .hero { grid-template-columns: 1fr; padding: 3rem 1.25rem; min-height: auto; }
   .hero-visual { display: none; }
   .about-grid { grid-template-columns: 1fr; }
   .tile-grid { order: -1; }
@@ -447,184 +295,173 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; 
 }
 </style>
 
-<!-- ─── Navigation ─── -->
+<!-- ── Nav ── -->
 <nav class="nav" role="navigation" aria-label="Main">
   <a href="#" class="brand">
-    <div class="brand-mark">ن</div>
+    <img src="data:image/jpeg;base64,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" class="brand-mark" alt="Noor Farsi School Logo" style="background:none;border-radius:0;padding:0;width:44px;height:44px;object-fit:contain;">
     <div class="brand-name">
       Noor Farsi School
       <small>مدرسه فارسی نور</small>
     </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#curriculum">Curriculum</a></li>
-    <li><a href="#schedule">Schedule</a></li>
-    <li><a href="#enroll" class="nav-cta">Enroll Now</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about"      data-key="nav-about">About</a></li>
+      <li><a href="#curriculum" data-key="nav-cur">Curriculum</a></li>
+      <li><a href="#schedule"   data-key="nav-sch">Schedule</a></li>
+      <li><a href="#enroll" class="nav-cta" data-key="nav-enr">Enroll Now</a></li>
+    </ul>
+    <button class="lang-btn" id="langToggle" aria-label="Switch language">
+      <span data-key="lang-btn">فارسی</span>
+    </button>
+  </div>
 </nav>
 
-<!-- ─── Hero ─── -->
+<!-- ── Hero ── -->
 <section class="hero" aria-label="Welcome">
   <div class="hero-content">
-    <div class="hero-badge">🌟 Farsi for the Next Generation</div>
-    <h1>Where Young Hearts Learn the <em>Language of Light</em></h1>
-    <p>A homeschool-style Farsi program helping Persian-American children connect with their heritage — through stories, songs, and real conversation.</p>
+    <div class="hero-badge" data-key="hero-badge">🌟 Farsi for the Next Generation</div>
+    <h1 data-key="hero-h1">Where Young Hearts Learn the <em>Language of Light</em></h1>
+    <p data-key="hero-p">A homeschool-style Farsi program helping Persian-American children connect with their heritage — through stories, songs, and real conversation.</p>
     <div class="btn-row">
-      <a href="#enroll" class="btn btn-gold">Enroll Your Child</a>
-      <a href="#about"  class="btn btn-ghost">Learn More</a>
+      <a href="#enroll" class="btn btn-gold"  data-key="hero-btn1">Enroll Your Child</a>
+      <a href="#about"  class="btn btn-ghost" data-key="hero-btn2">Learn More</a>
     </div>
   </div>
   <div class="hero-visual" aria-hidden="true">
     <div class="ornament">
-      <div class="o-ring"></div>
-      <div class="o-ring"></div>
-      <div class="o-ring"></div>
+      <div class="o-ring"></div><div class="o-ring"></div><div class="o-ring"></div>
       <div class="o-word">نور<span>Noor · Light</span></div>
       <div class="o-orbit">
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot"></div>
-        <div class="o-dot-inner"></div>
-        <div class="o-dot-inner"></div>
-        <div class="o-dot-inner"></div>
-        <div class="o-dot-inner"></div>
+        <div class="o-dot"></div><div class="o-dot"></div><div class="o-dot"></div>
+        <div class="o-dot"></div><div class="o-dot"></div><div class="o-dot"></div>
+        <div class="o-dot"></div><div class="o-dot"></div>
+        <div class="o-dot-inner"></div><div class="o-dot-inner"></div>
+        <div class="o-dot-inner"></div><div class="o-dot-inner"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── About ─── -->
+<!-- ── About ── -->
 <section class="section about" id="about">
   <div class="inner">
-    <div class="eyebrow">درباره ما · About Us</div>
-    <h2 class="section-title">A School Built Around Your Child</h2>
-    <p class="section-sub">Noor Farsi School is a small, dedicated program where children learn Farsi the way it was meant to be learned — joyfully, with meaning, and rooted in culture.</p>
+    <div class="eyebrow"     data-key="ab-eyebrow">درباره ما · About Us</div>
+    <h2 class="section-title" data-key="ab-title">A School Built Around Your Child</h2>
+    <p class="section-sub"   data-key="ab-sub">Noor Farsi School is a small, dedicated program where children learn Farsi the way it was meant to be learned — joyfully, with meaning, and rooted in culture.</p>
     <div class="about-grid">
       <div class="tile-grid" aria-hidden="true">
-        <div class="tile"><div class="t-icon">📚</div><div class="t-label">Story-Based Learning</div></div>
-        <div class="tile"><div class="t-icon">🎵</div><div class="t-label">Songs &amp; Rhymes</div></div>
-        <div class="tile"><div class="t-icon">✍️</div><div class="t-label">Script &amp; Writing</div></div>
-        <div class="tile"><div class="t-icon">💬</div><div class="t-label">Live Conversation</div></div>
+        <div class="tile"><div class="t-icon">📚</div><div class="t-label" data-key="tile1">Story-Based Learning</div></div>
+        <div class="tile"><div class="t-icon">🎵</div><div class="t-label" data-key="tile2">Songs &amp; Rhymes</div></div>
+        <div class="tile"><div class="t-icon">✍️</div><div class="t-label" data-key="tile3">Script &amp; Writing</div></div>
+        <div class="tile"><div class="t-icon">💬</div><div class="t-label" data-key="tile4">Live Conversation</div></div>
       </div>
       <div class="about-copy">
-        <h3>Our Mission</h3>
-        <p>We believe every Persian-American child deserves to hold their language close — to read their grandparents' letters, to understand the poetry of Hafez, and to feel at home in both worlds.</p>
-        <h3>How We Teach</h3>
-        <p>Classes are small and welcoming, with a warm homeschool spirit. Each session blends speaking, listening, reading, and writing — all within the context of Persian culture and storytelling. No rote drills. Real language, real connection.</p>
-        <h3>Who It's For</h3>
-        <p>Children ages 5–14, at any level. Whether your child has never heard Farsi spoken, or already speaks it at home but can't yet read it — there is a place for them here.</p>
+        <h3 data-key="ab-h3-1">Our Mission</h3>
+        <p  data-key="ab-p1">We believe every Persian-American child deserves to hold their language close — to read their grandparents' letters, to understand the poetry of Hafez, and to feel at home in both worlds.</p>
+        <h3 data-key="ab-h3-2">How We Teach</h3>
+        <p  data-key="ab-p2">Classes are small and welcoming, with a warm homeschool spirit. Each session blends speaking, listening, reading, and writing — all within the context of Persian culture and storytelling. No rote drills. Real language, real connection.</p>
+        <h3 data-key="ab-h3-3">Who It's For</h3>
+        <p  data-key="ab-p3">Children ages 5–14, at any level. Whether your child has never heard Farsi spoken, or already speaks it at home but can't yet read it — there is a place for them here.</p>
         <div class="pills">
-          <span class="pill">Ages 5–14</span>
-          <span class="pill">Small Classes</span>
-          <span class="pill">All Levels</span>
-          <span class="pill">Cultural Immersion</span>
+          <span class="pill" data-key="pill1">Ages 5–14</span>
+          <span class="pill" data-key="pill2">Small Classes</span>
+          <span class="pill" data-key="pill3">All Levels</span>
+          <span class="pill" data-key="pill4">Cultural Immersion</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Curriculum ─── -->
+<!-- ── Curriculum ── -->
 <section class="section curriculum" id="curriculum">
   <div class="inner">
-    <div class="eyebrow">برنامه درسی · Curriculum</div>
-    <h2 class="section-title">Three Levels, One Journey</h2>
-    <p class="section-sub">Each level builds gently on the last, keeping children engaged and moving forward at the right pace.</p>
+    <div class="eyebrow"      data-key="cur-eyebrow">برنامه درسی · Curriculum</div>
+    <h2 class="section-title" data-key="cur-title">Three Levels, One Journey</h2>
+    <p class="section-sub"    data-key="cur-sub">Each level builds gently on the last, keeping children engaged and moving forward at the right pace.</p>
     <div class="levels">
-
       <article class="level">
         <div class="lv-farsi">نور کوچک</div>
-        <div class="lv-en">Little Light</div>
-        <span class="lv-tag">Beginner · Ages 5–7</span>
+        <div class="lv-en" data-key="lv1-en">Little Light</div>
+        <span class="lv-tag" data-key="lv1-tag">Beginner · Ages 5–7</span>
         <ul class="lv-items">
-          <li>Persian alphabet — letters and sounds</li>
-          <li>Numbers, colors, animals, and family words</li>
-          <li>Simple songs and nursery rhymes</li>
-          <li>Basic everyday phrases and greetings</li>
-          <li>Visual games and hands-on activities</li>
+          <li data-key="lv1-i1">Persian alphabet — letters and sounds</li>
+          <li data-key="lv1-i2">Numbers, colors, animals, and family words</li>
+          <li data-key="lv1-i3">Simple songs and nursery rhymes</li>
+          <li data-key="lv1-i4">Basic everyday phrases and greetings</li>
+          <li data-key="lv1-i5">Visual games and hands-on activities</li>
         </ul>
       </article>
-
       <article class="level">
         <div class="lv-farsi">نور رشد</div>
-        <div class="lv-en">Growing Light</div>
-        <span class="lv-tag">Intermediate · Ages 8–11</span>
+        <div class="lv-en" data-key="lv2-en">Growing Light</div>
+        <span class="lv-tag" data-key="lv2-tag">Intermediate · Ages 8–11</span>
         <ul class="lv-items">
-          <li>Reading connected text and short stories</li>
-          <li>Writing sentences and short paragraphs</li>
-          <li>Vocabulary through Persian folktales</li>
-          <li>Everyday conversation practice</li>
-          <li>Introduction to Persian poetry</li>
+          <li data-key="lv2-i1">Reading connected text and short stories</li>
+          <li data-key="lv2-i2">Writing sentences and short paragraphs</li>
+          <li data-key="lv2-i3">Vocabulary through Persian folktales</li>
+          <li data-key="lv2-i4">Everyday conversation practice</li>
+          <li data-key="lv2-i5">Introduction to Persian poetry</li>
         </ul>
       </article>
-
       <article class="level">
         <div class="lv-farsi">نور درخشان</div>
-        <div class="lv-en">Bright Light</div>
-        <span class="lv-tag">Advanced · Ages 12–14</span>
+        <div class="lv-en" data-key="lv3-en">Bright Light</div>
+        <span class="lv-tag" data-key="lv3-tag">Advanced · Ages 12–14</span>
         <ul class="lv-items">
-          <li>Reading literature and longer prose</li>
-          <li>Expressive and descriptive writing</li>
-          <li>Classical poetry — Hafez &amp; Rumi</li>
-          <li>Persian cultural history and traditions</li>
-          <li>Independent reading projects</li>
+          <li data-key="lv3-i1">Reading literature and longer prose</li>
+          <li data-key="lv3-i2">Expressive and descriptive writing</li>
+          <li data-key="lv3-i3">Classical poetry — Hafez &amp; Rumi</li>
+          <li data-key="lv3-i4">Persian cultural history and traditions</li>
+          <li data-key="lv3-i5">Independent reading projects</li>
         </ul>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- ─── Schedule ─── -->
+<!-- ── Schedule ── -->
 <section class="section schedule" id="schedule">
   <div class="inner">
-    <div class="eyebrow">برنامه کلاس‌ها · Class Schedule</div>
-    <h2 class="section-title">Upcoming Classes &amp; Events</h2>
-    <p class="section-sub">Stay up to date with all sessions, holidays, and school events. All times shown in Central Time (Chicago).</p>
+    <div class="eyebrow"      data-key="sch-eyebrow">برنامه کلاس‌ها · Class Schedule</div>
+    <h2 class="section-title" data-key="sch-title">Upcoming Classes &amp; Events</h2>
+    <p class="section-sub"    data-key="sch-sub">Stay up to date with all sessions, holidays, and school events. All times shown in Central Time (Chicago).</p>
     <div class="cal-wrap">
       <iframe
         src="https://calendar.google.com/calendar/embed?src=5c3e2b7b9981b833f767ce6e8ba935c7827c1baeb9164a649507a59e887d806c%40group.calendar.google.com&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&mode=MONTH"
-        title="Noor Farsi School Calendar"
-        allowfullscreen
-        loading="lazy">
+        title="Noor Farsi School Calendar" allowfullscreen loading="lazy">
       </iframe>
-      <div class="cal-note">📅 All class times are in Central Time (CT) &nbsp;·&nbsp; Add this calendar to your Google Calendar to get reminders</div>
+      <div class="cal-note" data-key="cal-note">📅 All class times are in Central Time (CT) &nbsp;·&nbsp; Add this calendar to your Google Calendar to get reminders</div>
     </div>
   </div>
 </section>
 
-<!-- ─── Enrollment ─── -->
+<!-- ── Enrollment ── -->
 <section class="section enrollment" id="enroll">
   <div class="inner">
-    <div class="eyebrow">ثبت‌نام · Enrollment</div>
-    <h2 class="section-title">Reserve Your Child's Spot</h2>
-    <p class="section-sub">Classes fill quickly. Send us a message and we'll find the right fit for your child.</p>
+    <div class="eyebrow"      data-key="enr-eyebrow">ثبت‌نام · Enrollment</div>
+    <h2 class="section-title" data-key="enr-title">Reserve Your Child's Spot</h2>
+    <p class="section-sub"    data-key="enr-sub">Classes fill quickly. Send us a message and we'll find the right fit for your child.</p>
     <div class="enroll-grid">
-
       <div class="enroll-info">
-        <h4>What to Expect</h4>
-        <p>After you submit this form, we'll reach out within 48 hours to discuss your child's level, schedule your placement call, and share available session times.</p>
+        <h4 data-key="enr-h4">What to Expect</h4>
+        <p  data-key="enr-p">After you submit this form, we'll reach out within 48 hours to discuss your child's level, schedule your placement call, and share available session times.</p>
         <div class="info-card">
           <div class="ic">📅</div>
-          <div><strong>Schedule</strong><span>Weekly sessions — current openings shared when we connect.</span></div>
+          <div><strong data-key="ic1-s">Schedule</strong><span data-key="ic1-d">Weekly sessions — current openings shared when we connect.</span></div>
         </div>
         <div class="info-card">
           <div class="ic">👥</div>
-          <div><strong>Class Size</strong><span>Small groups of 4–6 students per level for personal attention.</span></div>
+          <div><strong data-key="ic2-s">Class Size</strong><span data-key="ic2-d">Small groups of 4–6 students per level for personal attention.</span></div>
         </div>
         <div class="info-card">
-          <div class="ic">💻</div>
-          <div><strong>Format</strong><span>Online via Zoom — accessible from anywhere in the US.</span></div>
+          <div class="ic">📍</div>
+          <div><strong data-key="ic3-s">Format</strong><span data-key="ic3-d">In-person — location TBD. Details will be shared upon enrollment.</span></div>
         </div>
         <div class="info-card">
           <div class="ic">✉️</div>
-          <div><strong>Direct Contact</strong><span>noorfarsi@gmail.com</span></div>
+          <div><strong data-key="ic4-s">Direct Contact</strong><span>noorfarsi@gmail.com</span></div>
         </div>
       </div>
 
@@ -632,70 +469,222 @@ footer p { font-size: 0.8rem; color: rgba(255,255,255,.42); margin-top: 0.5rem; 
         <form id="enrollForm">
           <div class="row2">
             <div class="fg">
-              <label for="childName">Child's First Name</label>
-              <input type="text" id="childName" autocomplete="off" placeholder="e.g. Daria" required>
+              <label for="childName" data-key="lbl-cn">Child's First Name</label>
+              <input type="text" id="childName" autocomplete="off"
+                data-ph-en="e.g. Daria" data-ph-fa="مثلاً آریا" placeholder="e.g. Daria" required>
             </div>
             <div class="fg">
-              <label for="childAge">Child's Age</label>
-              <input type="number" id="childAge" min="5" max="14" placeholder="5 – 14" required>
+              <label for="childAge" data-key="lbl-ca">Child's Age</label>
+              <input type="number" id="childAge" min="5" max="14"
+                data-ph-en="5 – 14" data-ph-fa="۵ – ۱۴" placeholder="5 – 14" required>
             </div>
           </div>
           <div class="row2">
             <div class="fg">
-              <label for="parentName">Your Name</label>
-              <input type="text" id="parentName" autocomplete="name" placeholder="Parent / guardian" required>
+              <label for="parentName" data-key="lbl-pn">Your Name</label>
+              <input type="text" id="parentName" autocomplete="name"
+                data-ph-en="Parent / guardian" data-ph-fa="پدر / مادر / سرپرست" placeholder="Parent / guardian" required>
             </div>
             <div class="fg">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" autocomplete="email" placeholder="you@email.com" required>
+              <label for="email" data-key="lbl-em">Email Address</label>
+              <input type="email" id="email" autocomplete="email"
+                data-ph-en="you@email.com" data-ph-fa="ایمیل شما" placeholder="you@email.com" required>
             </div>
           </div>
           <div class="fg">
-            <label for="level">Level Interest</label>
+            <label for="level" data-key="lbl-lv">Level Interest</label>
             <select id="level">
-              <option value="">— Help me choose the right level —</option>
-              <option value="little">نور کوچک — Little Light (Beginner, ages 5–7)</option>
-              <option value="growing">نور رشد — Growing Light (Intermediate, ages 8–11)</option>
-              <option value="bright">نور درخشان — Bright Light (Advanced, ages 12–14)</option>
+              <option value=""  data-key-opt="opt0">— Help me choose the right level —</option>
+              <option value="little"   data-key-opt="opt1">نور کوچک — Little Light (Beginner, ages 5–7)</option>
+              <option value="growing"  data-key-opt="opt2">نور رشد — Growing Light (Intermediate, ages 8–11)</option>
+              <option value="bright"   data-key-opt="opt3">نور درخشان — Bright Light (Advanced, ages 12–14)</option>
             </select>
           </div>
           <div class="fg">
-            <label for="message">Anything to share? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-            <textarea id="message" placeholder="Your child's current Farsi level, any questions, or whatever's on your mind…"></textarea>
+            <label for="message" data-key="lbl-msg">Anything to share? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <textarea id="message"
+              data-ph-en="Your child's current Farsi level, any questions, or whatever's on your mind…"
+              data-ph-fa="سطح فعلی فارسی فرزندتان، سؤالات یا هر چیزی که در ذهن دارید…"
+              placeholder="Your child's current Farsi level, any questions, or whatever's on your mind…"></textarea>
           </div>
-          <p class="form-note">By submitting this form you agree to be contacted about enrollment at Noor Farsi School.</p>
-          <button type="submit" class="submit-btn">Send Enrollment Request →</button>
+          <p class="form-note" data-key="form-note">By submitting this form you agree to be contacted about enrollment at Noor Farsi School.</p>
+          <button type="submit" class="submit-btn" id="submitBtn" data-key="submit-btn">Send Enrollment Request →</button>
         </form>
-        <div class="success-msg" id="successMsg" role="alert" hidden>
-          🌟 شکرگزاریم! Thank you!<br>
-          <span style="font-size:0.95rem;font-weight:500;color:var(--muted)">We'll be in touch within 48 hours to find the perfect fit for your child.</span>
+        <div class="success-msg" id="successMsg" role="alert">
+          <div data-key="succ1">🌟 شکرگزاریم! Thank you!</div>
+          <div style="font-size:0.95rem;font-weight:500;color:var(--muted);margin-top:0.5rem" data-key="succ2">We'll be in touch within 48 hours to find the perfect fit for your child.</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ─── Footer ─── -->
+<!-- ── Footer ── -->
 <footer>
   <span class="foot-logo">مدرسه فارسی نور</span>
-  <div class="foot-sub">Noor Farsi School</div>
-  <p>A homeschool Farsi program for Persian-American families &middot; &copy; 2026</p>
+  <span class="foot-sub-text" data-key="foot-sub">Noor Farsi School</span>
+  <p class="foot-copy" data-key="foot-copy">A homeschool Farsi program for Persian-American families &middot; &copy; 2026</p>
 </footer>
 
 <script>
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+/* ── Translations ── */
+const T = {
+  en: {
+    'nav-about':'About','nav-cur':'Curriculum','nav-sch':'Schedule','nav-enr':'Enroll Now','lang-btn':'فارسی',
+    'hero-badge':'🌟 Farsi for the Next Generation',
+    'hero-h1':'Where Young Hearts Learn the <em>Language of Light</em>',
+    'hero-p':'A homeschool-style Farsi program helping Persian-American children connect with their heritage — through stories, songs, and real conversation.',
+    'hero-btn1':'Enroll Your Child','hero-btn2':'Learn More',
+    'ab-eyebrow':'درباره ما · About Us','ab-title':'A School Built Around Your Child',
+    'ab-sub':'Noor Farsi School is a small, dedicated program where children learn Farsi the way it was meant to be learned — joyfully, with meaning, and rooted in culture.',
+    'tile1':'Story-Based Learning','tile2':'Songs &amp; Rhymes','tile3':'Script &amp; Writing','tile4':'Live Conversation',
+    'ab-h3-1':'Our Mission',
+    'ab-p1':'We believe every Persian-American child deserves to hold their language close — to read their grandparents\' letters, to understand the poetry of Hafez, and to feel at home in both worlds.',
+    'ab-h3-2':'How We Teach',
+    'ab-p2':'Classes are small and welcoming, with a warm homeschool spirit. Each session blends speaking, listening, reading, and writing — all within the context of Persian culture and storytelling. No rote drills. Real language, real connection.',
+    'ab-h3-3':'Who It\'s For',
+    'ab-p3':'Children ages 5–14, at any level. Whether your child has never heard Farsi spoken, or already speaks it at home but can\'t yet read it — there is a place for them here.',
+    'pill1':'Ages 5–14','pill2':'Small Classes','pill3':'All Levels','pill4':'Cultural Immersion',
+    'cur-eyebrow':'برنامه درسی · Curriculum','cur-title':'Three Levels, One Journey',
+    'cur-sub':'Each level builds gently on the last, keeping children engaged and moving forward at the right pace.',
+    'lv1-en':'Little Light','lv1-tag':'Beginner · Ages 5–7',
+    'lv1-i1':'Persian alphabet — letters and sounds','lv1-i2':'Numbers, colors, animals, and family words',
+    'lv1-i3':'Simple songs and nursery rhymes','lv1-i4':'Basic everyday phrases and greetings','lv1-i5':'Visual games and hands-on activities',
+    'lv2-en':'Growing Light','lv2-tag':'Intermediate · Ages 8–11',
+    'lv2-i1':'Reading connected text and short stories','lv2-i2':'Writing sentences and short paragraphs',
+    'lv2-i3':'Vocabulary through Persian folktales','lv2-i4':'Everyday conversation practice','lv2-i5':'Introduction to Persian poetry',
+    'lv3-en':'Bright Light','lv3-tag':'Advanced · Ages 12–14',
+    'lv3-i1':'Reading literature and longer prose','lv3-i2':'Expressive and descriptive writing',
+    'lv3-i3':'Classical poetry — Hafez &amp; Rumi','lv3-i4':'Persian cultural history and traditions','lv3-i5':'Independent reading projects',
+    'sch-eyebrow':'برنامه کلاس‌ها · Class Schedule','sch-title':'Upcoming Classes &amp; Events',
+    'sch-sub':'Stay up to date with all sessions, holidays, and school events. All times shown in Central Time (Chicago).',
+    'cal-note':'📅 All class times are in Central Time (CT) &nbsp;·&nbsp; Add this calendar to your Google Calendar to get reminders',
+    'enr-eyebrow':'ثبت‌نام · Enrollment','enr-title':'Reserve Your Child\'s Spot',
+    'enr-sub':'Classes fill quickly. Send us a message and we\'ll find the right fit for your child.',
+    'enr-h4':'What to Expect',
+    'enr-p':'After you submit this form, we\'ll reach out within 48 hours to discuss your child\'s level, schedule your placement call, and share available session times.',
+    'ic1-s':'Schedule','ic1-d':'Weekly sessions — current openings shared when we connect.',
+    'ic2-s':'Class Size','ic2-d':'Small groups of 4–6 students per level for personal attention.',
+    'ic3-s':'Format','ic3-d':'In-person — location TBD. Details will be shared upon enrollment.',
+    'ic4-s':'Direct Contact',
+    'lbl-cn':'Child\'s First Name','lbl-ca':'Child\'s Age','lbl-pn':'Your Name','lbl-em':'Email Address','lbl-lv':'Level Interest',
+    'lbl-msg':'Anything to share? <span style="font-weight:400;color:var(--muted)">(optional)</span>',
+    'opt0':'— Help me choose the right level —',
+    'opt1':'نور کوچک — Little Light (Beginner, ages 5–7)',
+    'opt2':'نور رشد — Growing Light (Intermediate, ages 8–11)',
+    'opt3':'نور درخشان — Bright Light (Advanced, ages 12–14)',
+    'form-note':'By submitting this form you agree to be contacted about enrollment at Noor Farsi School.',
+    'submit-btn':'Send Enrollment Request →',
+    'succ1':'🌟 شکرگزاریم! Thank you!',
+    'succ2':'We\'ll be in touch within 48 hours to find the perfect fit for your child.',
+    'foot-sub':'Noor Farsi School',
+    'foot-copy':'A homeschool Farsi program for Persian-American families &middot; &copy; 2026',
+  },
+  fa: {
+    'nav-about':'درباره ما','nav-cur':'برنامه درسی','nav-sch':'برنامه کلاس‌ها','nav-enr':'ثبت‌نام','lang-btn':'English',
+    'hero-badge':'🌟 فارسی برای نسل آینده',
+    'hero-h1':'جایی که قلب‌های کوچک <em>زبان نور</em> را می‌آموزند',
+    'hero-p':'برنامه‌ای خانگی برای آموزش زبان فارسی به کودکان ایرانی-آمریکایی — از طریق داستان، موسیقی و مکالمه واقعی.',
+    'hero-btn1':'ثبت‌نام فرزندتان','hero-btn2':'بیشتر بدانید',
+    'ab-eyebrow':'درباره ما','ab-title':'مدرسه‌ای که حول فرزند شما بنا شده',
+    'ab-sub':'مدرسه فارسی نور یک برنامه کوچک و متعهد است که در آن کودکان فارسی را آن‌گونه که باید آموخت یاد می‌گیرند — با شادی، با معنا و ریشه در فرهنگ.',
+    'tile1':'یادگیری از طریق داستان','tile2':'آهنگ و شعر','tile3':'خط و نوشتار','tile4':'مکالمه زنده',
+    'ab-h3-1':'مأموریت ما',
+    'ab-p1':'ما بر این باوریم که هر کودک ایرانی-آمریکایی لایق آن است که زبانش را نزدیک نگه دارد — نامه‌های پدربزرگ و مادربزرگش را بخواند، شعر حافظ را درک کند و در هر دو دنیا احساس تعلق کند.',
+    'ab-h3-2':'روش تدریس ما',
+    'ab-p2':'کلاس‌ها کوچک و گرم هستند، با روحیه‌ای خانگی. هر جلسه ترکیبی از صحبت کردن، شنیدن، خواندن و نوشتن است — همه در بستر فرهنگ و داستان‌های فارسی. بدون حفظ طوطی‌وار. زبان واقعی، ارتباط واقعی.',
+    'ab-h3-3':'برای چه کسانی است',
+    'ab-p3':'کودکان ۵ تا ۱۴ ساله، در هر سطحی. چه فرزندتان هرگز فارسی نشنیده باشد، چه در خانه صحبت می‌کند اما هنوز نمی‌تواند بخواند — اینجا جایی برای او هست.',
+    'pill1':'سنین ۵ تا ۱۴','pill2':'کلاس‌های کوچک','pill3':'همه سطوح','pill4':'غوطه‌وری فرهنگی',
+    'cur-eyebrow':'برنامه درسی','cur-title':'سه سطح، یک مسیر',
+    'cur-sub':'هر سطح به آرامی بر پایه سطح قبلی بنا می‌شود و کودکان را با سرعت مناسب درگیر و پیشرو نگه می‌دارد.',
+    'lv1-en':'نور کوچک','lv1-tag':'مبتدی · سنین ۵–۷',
+    'lv1-i1':'الفبای فارسی — حروف و صداها','lv1-i2':'اعداد، رنگ‌ها، حیوانات و کلمات خانوادگی',
+    'lv1-i3':'آهنگ‌های ساده و شعرهای کودکانه','lv1-i4':'عبارات و احوال‌پرسی‌های روزمره','lv1-i5':'بازی‌های تصویری و فعالیت‌های عملی',
+    'lv2-en':'نور رشد','lv2-tag':'متوسط · سنین ۸–۱۱',
+    'lv2-i1':'خواندن متن‌های پیوسته و داستان‌های کوتاه','lv2-i2':'نوشتن جملات و پاراگراف‌های کوتاه',
+    'lv2-i3':'واژگان از طریق افسانه‌های فارسی','lv2-i4':'تمرین مکالمه روزمره','lv2-i5':'آشنایی با شعر فارسی',
+    'lv3-en':'نور درخشان','lv3-tag':'پیشرفته · سنین ۱۲–۱۴',
+    'lv3-i1':'خواندن ادبیات و متون بلندتر','lv3-i2':'نوشتن توصیفی و بیانی',
+    'lv3-i3':'شعر کلاسیک — حافظ و مولانا','lv3-i4':'تاریخ و سنت‌های فرهنگی ایران','lv3-i5':'پروژه‌های مطالعه مستقل',
+    'sch-eyebrow':'برنامه کلاس‌ها','sch-title':'کلاس‌ها و رویدادهای آینده',
+    'sch-sub':'از همه جلسات، تعطیلات و رویدادهای مدرسه به‌روز بمانید. همه زمان‌ها به وقت مرکزی (شیکاگو) نمایش داده می‌شوند.',
+    'cal-note':'📅 همه زمان‌های کلاس به وقت مرکزی (CT) هستند &nbsp;·&nbsp; این تقویم را به Google Calendar خود اضافه کنید',
+    'enr-eyebrow':'ثبت‌نام','enr-title':'جای فرزندتان را رزرو کنید',
+    'enr-sub':'کلاس‌ها زود پر می‌شوند. پیامی برای ما ارسال کنید تا مناسب‌ترین گزینه را برای فرزندتان پیدا کنیم.',
+    'enr-h4':'چه انتظاری داشته باشید',
+    'enr-p':'پس از ارسال این فرم، ظرف ۴۸ ساعت با شما تماس می‌گیریم تا سطح فرزندتان را بررسی کنیم، جلسه تعیین سطح را تنظیم کنیم و زمان‌های موجود را با شما در میان بگذاریم.',
+    'ic1-s':'برنامه کلاس‌ها','ic1-d':'جلسات هفتگی — زمان‌های موجود هنگام تماس با شما اعلام می‌شود.',
+    'ic2-s':'تعداد دانش‌آموزان','ic2-d':'گروه‌های کوچک ۴ تا ۶ نفره برای توجه شخصی به هر دانش‌آموز.',
+    'ic3-s':'نوع برگزاری','ic3-d':'حضوری — مکان متعاقباً اعلام می‌شود. جزئیات پس از ثبت‌نام ارسال خواهد شد.',
+    'ic4-s':'تماس مستقیم',
+    'lbl-cn':'نام کوچک فرزند','lbl-ca':'سن فرزند','lbl-pn':'نام شما','lbl-em':'آدرس ایمیل','lbl-lv':'سطح مورد نظر',
+    'lbl-msg':'چیزی برای گفتن دارید؟ <span style="font-weight:400;color:var(--muted)">(اختیاری)</span>',
+    'opt0':'— کمکم کنید سطح مناسب را انتخاب کنم —',
+    'opt1':'نور کوچک — مبتدی (سنین ۵–۷)',
+    'opt2':'نور رشد — متوسط (سنین ۸–۱۱)',
+    'opt3':'نور درخشان — پیشرفته (سنین ۱۲–۱۴)',
+    'form-note':'با ارسال این فرم موافقت می‌کنید که برای ثبت‌نام در مدرسه فارسی نور با شما تماس گرفته شود.',
+    'submit-btn':'ارسال درخواست ثبت‌نام ←',
+    'succ1':'🌟 شکرگزاریم!',
+    'succ2':'ظرف ۴۸ ساعت با شما تماس می‌گیریم تا مناسب‌ترین گزینه را برای فرزندتان پیدا کنیم.',
+    'foot-sub':'مدرسه فارسی نور',
+    'foot-copy':'برنامه آموزش فارسی برای خانواده‌های ایرانی-آمریکایی &middot; ۲۰۲۶',
+  }
+};
+
+/* ── Language switcher ── */
+let lang = 'en';
+
+function setLang(l) {
+  lang = l;
+  const isFa = l === 'fa';
+  document.documentElement.dir  = isFa ? 'rtl' : 'ltr';
+  document.documentElement.lang = l;
+  document.body.classList.toggle('is-fa', isFa);
+
+  // Update all data-key elements
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const v = T[l][el.dataset.key];
+    if (v !== undefined) el.innerHTML = v;
   });
 
-  // Form submit (static demo — shows confirmation)
-  document.getElementById('enrollForm').addEventListener('submit', e => {
-    e.preventDefault();
-    document.getElementById('enrollForm').hidden = true;
-    document.getElementById('successMsg').hidden = false;
+  // Update select options
+  document.querySelectorAll('[data-key-opt]').forEach(opt => {
+    const v = T[l][opt.dataset.keyOpt];
+    if (v !== undefined) opt.textContent = v;
   });
+
+  // Update placeholders
+  document.querySelectorAll('[data-ph-en]').forEach(el => {
+    el.placeholder = isFa ? el.dataset.phFa : el.dataset.phEn;
+  });
+
+  try { localStorage.setItem('noor-lang', l); } catch(e) {}
+}
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  setLang(lang === 'en' ? 'fa' : 'en');
+});
+
+// Restore saved preference
+try {
+  const saved = localStorage.getItem('noor-lang');
+  if (saved === 'fa') setLang('fa');
+} catch(e) {}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+
+/* ── Form submit ── */
+document.getElementById('enrollForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('enrollForm').hidden = true;
+  document.getElementById('successMsg').classList.add('visible');
+});
 </script>
